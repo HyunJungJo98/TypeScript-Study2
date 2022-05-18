@@ -1,79 +1,62 @@
-class Department {
-    //name: string = 'DEFAULT';
+// 객체 형식
+// type Person2 =  {
+//     name: string;
+//     age: number;
 
-    protected employees: string[] = [];
-    constructor(private readonly id: string, public name: string) {}
+//     greet(phrase: string): void;
+// }
 
-    describe() {
-        //name : describe 메소드 내부 or클래스 외부의 전역변수를 찾음
-        //console.log(name);
-        console.log(`Department ${this.id}: ${this.name}`);
+interface AddFn {
+    (a: number, b: number): number;
+}
+
+//type AddFn = (a: number, b: number) => number;
+
+let add: AddFn;
+
+add = (n1: number, n2: number) => {
+    return n1 + n2;
+};
+
+interface Named {
+    readonly name?: string;
+    outputName?: string;
+}
+
+interface Greetable extends Named {
+    greet(pharse: string): void;
+}
+
+class Person implements Greetable {
+    name?: string;
+    age = 30;
+
+    constructor(n?: string) {
+        if (n) {
+            this.name = n;
+        }
     }
 
-    addEmployee(employee: string) {
-        this.employees.push(employee);
-    }
-
-    printEmployeeInformation() {
-        console.log(this.employees.length);
-        console.log(this.employees);
+    greet(pharse: string): void {
+        if (this.name) {
+            console.log(pharse + ' ' + this.name);
+        } else {
+            console.log('hi!');
+        }
     }
 }
 
-class ITDepartment extends Department {
-    constructor(id: string, public admins: string[]) {
-        super(id, 'IT');
-        this.admins = admins;
-    }
+let user1: Greetable;
 
-    //오버라이딩
-    addEmployee(name: string) {
-        if (name === 'Max') {
-            return;
-        }
-        this.employees.push(name);
-    }
-}
+user1 = new Person();
+user1.greet('Hi there - I am');
+console.log(user1);
 
-class AccountingDepartment extends Department {
-    private lastReport: string;
+type A = {
+    name: string;
+    age?: number;
+};
 
-    get mostRecentReport() {
-        if (this.lastReport) {
-            return this.lastReport;
-        }
-        throw new Error('No report found.');
-    }
-
-    set mostRecentReport(value: string) {
-        if (!value) {
-            throw new Error('no value');
-        }
-        this.addReport(value);
-    }
-
-    constructor(id: string, private reports: string[]) {
-        super(id, 'Accounting');
-        this.reports = reports;
-        this.lastReport = reports[0];
-    }
-
-    addReport(text: string) {
-        this.reports.push(text);
-        this.lastReport = text;
-    }
-
-    printReports() {
-        console.log(this.reports);
-    }
-}
-
-const it = new ITDepartment('id', ['Max']);
-
-const accounting = new AccountingDepartment('id', []);
-accounting.addReport('something went wrong');
-accounting.describe();
-accounting.printEmployeeInformation();
-accounting.printReports();
-accounting.mostRecentReport = '';
-console.log(accounting.mostRecentReport);
+const a: A = {
+    name: 'HJ',
+};

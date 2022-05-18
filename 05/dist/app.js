@@ -1,67 +1,29 @@
 "use strict";
-class Department {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-        this.employees = [];
+let add;
+add = (n1, n2) => {
+    return n1 + n2;
+};
+class Person {
+    constructor(n) {
+        this.age = 30;
+        if (n) {
+            this.name = n;
+        }
     }
-    describe() {
-        console.log(`Department ${this.id}: ${this.name}`);
-    }
-    addEmployee(employee) {
-        this.employees.push(employee);
-    }
-    printEmployeeInformation() {
-        console.log(this.employees.length);
-        console.log(this.employees);
+    greet(pharse) {
+        if (this.name) {
+            console.log(pharse + ' ' + this.name);
+        }
+        else {
+            console.log('hi!');
+        }
     }
 }
-class ITDepartment extends Department {
-    constructor(id, admins) {
-        super(id, 'IT');
-        this.admins = admins;
-        this.admins = admins;
-    }
-    addEmployee(name) {
-        if (name === 'Max') {
-            return;
-        }
-        this.employees.push(name);
-    }
-}
-class AccountingDepartment extends Department {
-    constructor(id, reports) {
-        super(id, 'Accounting');
-        this.reports = reports;
-        this.reports = reports;
-        this.lastReport = reports[0];
-    }
-    get mostRecentReport() {
-        if (this.lastReport) {
-            return this.lastReport;
-        }
-        throw new Error('No report found.');
-    }
-    set mostRecentReport(value) {
-        if (!value) {
-            throw new Error('no value');
-        }
-        this.addReport(value);
-    }
-    addReport(text) {
-        this.reports.push(text);
-        this.lastReport = text;
-    }
-    printReports() {
-        console.log(this.reports);
-    }
-}
-const it = new ITDepartment('id', ['Max']);
-const accounting = new AccountingDepartment('id', []);
-accounting.addReport('something went wrong');
-accounting.describe();
-accounting.printEmployeeInformation();
-accounting.printReports();
-accounting.mostRecentReport = '';
-console.log(accounting.mostRecentReport);
+let user1;
+user1 = new Person();
+user1.greet('Hi there - I am');
+console.log(user1);
+const a = {
+    name: 'HJ',
+};
 //# sourceMappingURL=app.js.map
