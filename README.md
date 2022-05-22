@@ -15,3 +15,4 @@
 |   2022-05-20 금    |                 섹션8                 | :heavy_check_mark: |
 | :heavy_check_mark: |
 |   2022-05-21 토    |                섹션14                 | :heavy_check_mark: |
+|   2022-05-22 일    |              섹션11, 12               | :heavy_check_mark: |
