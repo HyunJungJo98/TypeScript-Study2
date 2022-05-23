@@ -16,3 +16,4 @@
 | :heavy_check_mark: |
 |   2022-05-21 토    |                섹션14                 | :heavy_check_mark: |
 |   2022-05-22 일    |              섹션11, 12               | :heavy_check_mark: |
+|   2022-05-23 월    |          섹션9 120강 ~ 128강          | :heavy_check_mark: |
